@@ -1,0 +1,32 @@
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #d4f4f4;
+  text-align: center;
+}
+.card {
+  width: 600px;
+  padding: 1rem 1.2rem;
+  border-radius: var(--border-radius);
+  background: rgba(var(--card-rgb), 0);
+  border: 2px solid #ff9900;
+  transition: background 200ms, border 200ms;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.card1 {
+  width: 800px;
+  padding: 1rem 1.2rem;
+  border-radius: var(--border-radius);
+  background: rgba(var(--card-rgb), 0);
+  margin: 10px auto;
+  text-align: left;
+}
+
+.bold {
+  font-weight: 700;
+}

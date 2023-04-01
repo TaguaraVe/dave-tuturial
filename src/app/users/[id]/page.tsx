@@ -1,10 +1,14 @@
 import { Suspense } from 'react';
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+
+import styles from '../users.module.css';
+import getAllUsers from '@/lib/getAllUsers';
 import getUserById from '@/lib/getUserById';
 import getUserPosts from '@/lib/getUserPosts';
-import styles from '../users.module.css';
+
 import { UserInfo } from './userDetail';
 import { UserPostsList } from './userPostsList';
-import type { Metadata } from 'next';
 
 type Params = {
   params: {
@@ -17,6 +21,13 @@ export const generateMetadata = async ({
 }: Params): Promise<Metadata> => {
   const userData: Promise<User> = getUserById(params.id);
   const user = await userData;
+
+  if (!user?.name) {
+    return {
+      title: ' User not Found',
+    };
+  }
+
   return {
     title: user.name,
     description: `Taguara Digital - Practica Pagina del Usuario ${user.name}`,
@@ -29,6 +40,8 @@ const UserDetail = async ({ params }: Params) => {
   // const [user, posts] = await Promise.all([userData, userPosts]);
   const user = await userData;
 
+  if (!user?.name) return notFound();
+
   return (
     <section className={styles.section}>
       <UserInfo user={user} />
@@ -40,4 +53,12 @@ const UserDetail = async ({ params }: Params) => {
     </section>
   );
 };
+
+export const generateStaticParams = async () => {
+  const usersData: Promise<User[]> = getAllUsers();
+  const users = await usersData;
+
+  return users.map((user) => ({ id: user.id.toString() }));
+};
+
 export default UserDetail;

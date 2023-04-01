@@ -10,7 +10,7 @@ export default function AboutLayout({
 }) {
   return (
     <>
-      <div> About Layout</div>
+      <div className="h-8 "> About Layout</div>
       {children}
     </>
   );

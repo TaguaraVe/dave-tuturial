@@ -1,0 +1,22 @@
+
+### REGISTER => sign up a new user (Hook = useRegister)
+POST https://api.escuelajs.co/api/v1/users/
+Content-Type: application/json
+
+{
+  "name": "Renta",
+  "email": "rent@truck.com",
+  "password": "1234",
+  "avatar": "https://api.lorem.space/image/face?w=640&h=480&r=867"
+}
+
+
+### LOGIN => sign in a user (Hook useLogin)
+POST https://api.escuelajs.co/api/v1/auth/login
+Content-Type: application/json
+
+{"email": "rent@truck.com", "password": "1234"}
+
+
+### 
+GET https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=proba&gsrlimit=20&prop=pageimages%7Cextracts&exchars=100&exintro=true&explaintext=true&exlimit=max&format=json&origin=*
